@@ -18,11 +18,39 @@
 </head>
 
 <body>
-    <div class="content">
-        <div class="title m-b-md">
-            Laravel
+    <div class="container ">
+        <div class="text-center mt-5">
+            <h2>To Do List</h2>
         </div>
-    </div>
+        <form action="/action_page.php">
+            @csrf
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="do_at">Do Date </label>
+                <div class="col-sm-3">
+                    <input type="date" class="form-control" id="do_at" name="do_at">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="topic">Topic</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="topic" name="topic">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">Add</button>
+                </div>
+            </div>
+        </form>
+        <table class="table table-dark table-bordered">
+            <thead>
+                <th>Date</th>
+                <th>Topic</th>
+                <th>Status</th>
+                <th>Delete</th>
+            </thead>
+
+        </table>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
