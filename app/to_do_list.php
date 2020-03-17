@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class list extends Model
+class to_do_list extends Model
 {
     //
 }
