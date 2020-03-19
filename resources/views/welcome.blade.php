@@ -53,7 +53,7 @@
         </form>
         <table class="table table-dark table-bordered">
             <thead>
-                <th>Date</th>
+                <th>Do Date</th>
                 <th>Topic</th>
                 <th>Status</th>
                 <th>Delete</th>

@@ -14,7 +14,7 @@ class ToDoListController extends Controller
      */
     public function index()
     {
-        $to_do_lists = To_do_list::all();
+        $to_do_lists = To_do_list::orderBy('do_at')->get();
         return view('welcome',compact('to_do_lists'));
     }
 
