@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','ToDoListController@index');
+Route::resource('list', 'ToDoListController');

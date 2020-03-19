@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\To_do_list;
 
 class ToDoListController extends Controller
 {
@@ -13,7 +14,8 @@ class ToDoListController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $to_do_lists = To_do_list::all();
+        return view('welcome',compact('to_do_lists'));
     }
 
     /**
@@ -34,7 +36,16 @@ class ToDoListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'do_at' => 'required|date',
+            'topic' => 'required',
+        ]);
+        To_do_list::create([
+            'do_at' => $request->do_at,
+            'topic' => $request->topic,
+            'status' => 'New',
+        ]);
+        return \redirect('list');
     }
 
     /**

@@ -22,12 +22,21 @@
         <div class="text-center mt-5">
             <h2>To Do List</h2>
         </div>
-        <form action="/action_page.php">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        <form action="{{route('list.store')}}" method="POST">
             @csrf
             <div class="form-group">
                 <label class="control-label col-sm-2" for="do_at">Do Date </label>
                 <div class="col-sm-3">
-                    <input type="date" class="form-control" id="do_at" name="do_at">
+                    <input type="date" class="form-control" id="do_at" name="do_at" value="{{date('Y-m-d')}}">
                 </div>
             </div>
             <div class="form-group">
@@ -49,7 +58,15 @@
                 <th>Status</th>
                 <th>Delete</th>
             </thead>
+            @foreach ($to_do_lists as $to_do_list)
+            <tr>
+                <td>{{$to_do_list->do_at}}</td>
+                <td>{{$to_do_list->topic}}</td>
+                <td>{{$to_do_list->status}}</td>
+                <td><button class="btn btn-danger">Delete</button></td>
+            </tr>
 
+            @endforeach
         </table>
     </div>
 </body>
