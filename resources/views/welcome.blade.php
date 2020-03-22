@@ -63,7 +63,13 @@
                 <td>{{$to_do_list->do_at}}</td>
                 <td>{{$to_do_list->topic}}</td>
                 <td>{{$to_do_list->status}}</td>
-                <td><button class="btn btn-danger">Delete</button></td>
+                <td>
+                    <form action="{{route('list.destroy',$to_do_list->id)}}" method="post" class="delete-form">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                    </form>
+                </td>
             </tr>
 
             @endforeach

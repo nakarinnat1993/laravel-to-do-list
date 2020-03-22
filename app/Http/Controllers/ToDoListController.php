@@ -90,6 +90,8 @@ class ToDoListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $to_do_lists = To_do_list::find($id);
+        $to_do_lists->delete();
+        return \redirect('list');
     }
 }
