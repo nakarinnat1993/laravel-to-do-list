@@ -14,7 +14,9 @@ class ToDoListController extends Controller
      */
     public function index()
     {
-        $to_do_lists = To_do_list::orderBy('do_at')->get();
+        $to_do_lists = To_do_list::where('do_at', '>=', date('Y-m-d'))
+            ->orWhere('status', '=', 'New')
+            ->orderBy('do_at')->get();
         return view('welcome', compact('to_do_lists'));
     }
 
@@ -103,6 +105,5 @@ class ToDoListController extends Controller
         $to_do_lists = To_do_list::find($id);
         $to_do_lists->status = $status;
         $to_do_lists->save();
-
     }
 }
