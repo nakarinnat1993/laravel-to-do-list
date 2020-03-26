@@ -15,7 +15,7 @@ class ToDoListController extends Controller
     public function index()
     {
         $to_do_lists = To_do_list::orderBy('do_at')->get();
-        return view('welcome',compact('to_do_lists'));
+        return view('welcome', compact('to_do_lists'));
     }
 
     /**
@@ -82,6 +82,7 @@ class ToDoListController extends Controller
         //
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -93,5 +94,15 @@ class ToDoListController extends Controller
         $to_do_lists = To_do_list::find($id);
         $to_do_lists->delete();
         return \redirect('list');
+    }
+    function ajax_change_status(Request $request)
+    {
+        $id = $request->id;
+        $status = $request->status;
+
+        $to_do_lists = To_do_list::find($id);
+        $to_do_lists->status = $status;
+        $to_do_lists->save();
+
     }
 }

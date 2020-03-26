@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('list', 'ToDoListController');
+
+Route::post('ajax_change_status', 'ToDoListController@ajax_change_status')->name('ajax_change_status');
